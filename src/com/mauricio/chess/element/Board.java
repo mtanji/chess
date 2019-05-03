@@ -11,34 +11,47 @@ public class Board {
     private static final Map<String, Integer> fileToFileNumber = new HashMap<>();
 
     static {
-        fileNumberToFile.put(0, "a");
-        fileNumberToFile.put(1, "b");
-        fileNumberToFile.put(2, "c");
-        fileNumberToFile.put(3, "d");
-        fileNumberToFile.put(4, "e");
-        fileNumberToFile.put(5, "f");
-        fileNumberToFile.put(6, "g");
-        fileNumberToFile.put(7, "h");
+        fileNumberToFile.put(1, "a");
+        fileNumberToFile.put(2, "b");
+        fileNumberToFile.put(3, "c");
+        fileNumberToFile.put(4, "d");
+        fileNumberToFile.put(5, "e");
+        fileNumberToFile.put(6, "f");
+        fileNumberToFile.put(7, "g");
+        fileNumberToFile.put(8, "h");
 
-        fileToFileNumber.put("a", 0);
-        fileToFileNumber.put("b", 1);
-        fileToFileNumber.put("c", 2);
-        fileToFileNumber.put("d", 3);
-        fileToFileNumber.put("e", 4);
-        fileToFileNumber.put("f", 5);
-        fileToFileNumber.put("g", 6);
-        fileToFileNumber.put("h", 7);
+        fileToFileNumber.put("a", 1);
+        fileToFileNumber.put("b", 2);
+        fileToFileNumber.put("c", 3);
+        fileToFileNumber.put("d", 4);
+        fileToFileNumber.put("e", 5);
+        fileToFileNumber.put("f", 6);
+        fileToFileNumber.put("g", 7);
+        fileToFileNumber.put("h", 8);
     }
 
     private final Game game;
-    Cell[][] cells = new Cell[BOARD_LENGTH][BOARD_LENGTH];
+    private final Map<String, Piece> whitePieces = new HashMap<>();
+    private final Map<String, Piece> blackPieces = new HashMap<>();
+    private final Map<String, Cell> cells = new HashMap<>();
 
     public Board(Game game) {
         this.game = game;
-        for (int file = 0; file < BOARD_LENGTH; file++) {
-            for (int rank = 0; rank < BOARD_LENGTH; rank++) {
-                cells[file][rank] = new Cell(fileNumberToFile.get(file), rank);
+        for (int fileNumber = 0; fileNumber < BOARD_LENGTH; fileNumber++) {
+            for (int rank = 1; rank <= BOARD_LENGTH; rank++) {
+                String file = fileNumberToFile.get(fileNumber);
+                cells.put(file + rank, new Cell(file, rank));
             }
+        }
+
+        for (int fileNumber = 0; fileNumber < BOARD_LENGTH; fileNumber++) {
+            String file = fileNumberToFile.get(fileNumber);
+
+            // white pawns
+            whitePieces.put("pawn" + fileNumber, new Pawn(cells.get(file + 2), PieceColor.WHITE));
+
+            // black pawns
+            blackPieces.put("pawn" + fileNumber, new Pawn(cells.get(file + 7), PieceColor.BLACK));
         }
     }
 

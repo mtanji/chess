@@ -1,12 +1,14 @@
 package com.mauricio.chess.element;
 
-import java.util.List;
+public abstract class Piece {
 
-public interface Piece {
+    private final PieceColor color;
 
-    List<String> moves();
+    Piece(PieceColor color) {
+        this.color = color;
+    }
 
-    void move(String cell);
+    abstract void move(Cell cell);
 
-    boolean allowed(String cell);
+    abstract boolean allowed(Cell cell);
 }
