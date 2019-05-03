@@ -1,6 +1,7 @@
 package com.mauricio.chess.element;
 
 public class Cell {
+
     private final String file;
     private final Integer rank;
     private Piece piece;

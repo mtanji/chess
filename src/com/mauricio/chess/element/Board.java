@@ -1,5 +1,6 @@
 package com.mauricio.chess.element;
 
+import com.mauricio.chess.dynamics.Game;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -29,9 +30,11 @@ public class Board {
         fileToFileNumber.put("h", 7);
     }
 
+    private final Game game;
     Cell[][] cells = new Cell[BOARD_LENGTH][BOARD_LENGTH];
 
-    public Board() {
+    public Board(Game game) {
+        this.game = game;
         for (int file = 0; file < BOARD_LENGTH; file++) {
             for (int rank = 0; rank < BOARD_LENGTH; rank++) {
                 cells[file][rank] = new Cell(fileNumberToFile.get(file), rank);
@@ -39,4 +42,26 @@ public class Board {
         }
     }
 
+    public void move(String move, PieceColor color) {
+        // validate move
+
+        // verify check or checkmate
+        if (isCheck(color)) {
+            // send check message
+            game.check();
+        } else if (isCheckMate(color)) {
+            // send checkmate message
+            game.setWinner(color);
+            game.end();
+        }
+
+    }
+
+    private boolean isCheck(PieceColor color) {
+        return Math.random() > 0.5;
+    }
+
+    private boolean isCheckMate(PieceColor color) {
+        return Math.random() > 0.5;
+    }
 }
