@@ -28,7 +28,8 @@ public class Board {
         for (int fileNumber = 1; fileNumber <= BOARD_LENGTH; fileNumber++) {
             for (int rank = 1; rank <= BOARD_LENGTH; rank++) {
                 String file = FileMapping.fileNumberToFile.get(fileNumber);
-                cells.put(file + rank, new Cell(file, rank));
+                Cell cell = new Cell(file, rank);
+                cells.put(cell.toString(), cell);
             }
         }
 
@@ -36,13 +37,14 @@ public class Board {
             String file = FileMapping.fileNumberToFile.get(fileNumber);
 
             // white pawns
-            if(!whitePieces.containsKey(PieceType.Pawn)) {
+            if (!whitePieces.containsKey(PieceType.Pawn)) {
                 whitePieces.put(PieceType.Pawn, new ArrayList<>());
             }
+
             whitePieces.get(PieceType.Pawn).add(new Pawn(this, cells.get(file + 2), PieceColor.WHITE));
 
             // black pawns
-            if(!blackPieces.containsKey(PieceType.Pawn)) {
+            if (!blackPieces.containsKey(PieceType.Pawn)) {
                 blackPieces.put(PieceType.Pawn, new ArrayList<>());
             }
             blackPieces.get(PieceType.Pawn).add(new Pawn(this, cells.get(file + 7), PieceColor.BLACK));
@@ -57,6 +59,7 @@ public class Board {
         // validate move
         MovingPieceFinder movingPieceFinder = new MovingPieceFinder(this, move);
         Piece piece = movingPieceFinder.find();
+        piece.move(cells.get(move.getMoveTo().toString()));
 
         // verify check or checkmate
         if (isCheck(pieceColor)) {

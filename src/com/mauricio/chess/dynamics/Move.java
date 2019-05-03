@@ -24,7 +24,7 @@ public class Move {
         return pieceType;
     }
 
-    Cell getMoveTo() {
+    public Cell getMoveTo() {
         return moveTo;
     }
 }

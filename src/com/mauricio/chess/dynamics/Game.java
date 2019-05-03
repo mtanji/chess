@@ -26,6 +26,9 @@ public class Game {
         }
     }
 
+    /**
+     * Retry while user does not provide valid move
+     */
     private void whiteMove() {
         boolean moveOk = false;
         do {
@@ -53,6 +56,7 @@ public class Game {
 
                 // move black piece
                 board.move(blackMove, PieceColor.BLACK);
+                moveOk = true;
             } catch (IllegalArgumentException iae) {
                 System.out.println(iae.getMessage());
             }

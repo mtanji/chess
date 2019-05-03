@@ -4,17 +4,11 @@ public class Pawn extends Piece {
 
     private boolean firstMove = true;
     private final Board board;
-    private Cell currentCell;
 
     Pawn(Board board, Cell currentCell, PieceColor color) {
-        super(color);
+        super(color, currentCell);
         this.board = board;
-        this.currentCell = currentCell;
-    }
-
-    @Override
-    void move(Cell cell) {
-
+        currentCell.setPiece(this);
     }
 
     @Override
@@ -49,6 +43,7 @@ public class Pawn extends Piece {
     }
 
     private boolean isWhiteCapture(Cell moveTo) {
+        // TODO
         //moveTo.getRank() == currentCell.getRank() + 1 && isNeighborFile(moveTo) && isCellOccupied(moveTo);
         return false;
     }

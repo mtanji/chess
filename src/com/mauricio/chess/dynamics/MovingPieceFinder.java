@@ -25,6 +25,6 @@ public class MovingPieceFinder {
             }
         }
         throw new IllegalArgumentException(
-                "There is not piece of type " + move.getPieceType() + " that can be moved to " + move.getMoveTo());
+                "There is no piece of type " + move.getPieceType() + " that can be moved to " + move.getMoveTo());
     }
 }

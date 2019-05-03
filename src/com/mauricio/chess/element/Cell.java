@@ -11,6 +11,10 @@ public class Cell {
         this.rank = rank;
     }
 
+    void setPiece(Piece piece) {
+        this.piece = piece;
+    }
+
     public String getFile() {
         return file;
     }
