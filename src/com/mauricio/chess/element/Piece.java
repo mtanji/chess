@@ -2,13 +2,13 @@ package com.mauricio.chess.element;
 
 public abstract class Piece {
 
-    private final PieceColor color;
+    protected final PieceColor pieceColor;
 
-    Piece(PieceColor color) {
-        this.color = color;
+    Piece(PieceColor pieceColor) {
+        this.pieceColor = pieceColor;
     }
 
     abstract void move(Cell cell);
 
-    abstract boolean allowed(Cell cell);
+    abstract public boolean allowed(Cell cell);
 }

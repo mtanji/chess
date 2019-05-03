@@ -6,7 +6,9 @@ import java.util.Scanner;
 
 public class Game {
 
+    private final Scanner sc = new Scanner(System.in);
     private final Board board;
+
     private boolean gameOnGoing = true;
     private PieceColor winner;
 
@@ -19,24 +21,44 @@ public class Game {
         // while there is no winner
         // alternate white and black
         while (gameOnGoing) {
-
-            // read white move
-            System.out.println("White move: ");
-            Scanner sc = new Scanner(System.in);
-            String whiteMove = sc.nextLine();
-
-            // move white piece
-            board.move(whiteMove, PieceColor.WHITE);
-
-            // read black move
-            System.out.println("Black move: ");
-            sc = new Scanner(System.in);
-            String blackMove = sc.nextLine();
-
-            // move black piece
-            board.move(blackMove, PieceColor.BLACK);
+            whiteMove();
+            blackMove();
         }
     }
+
+    private void whiteMove() {
+        boolean moveOk = false;
+        do {
+            try {
+                // read white move
+                System.out.println("White move: ");
+                String whiteMove = sc.nextLine();
+
+                // move white piece
+                board.move(whiteMove, PieceColor.WHITE);
+                moveOk = true;
+            } catch (IllegalArgumentException iae) {
+                System.out.println(iae.getMessage());
+            }
+        } while (!moveOk);
+    }
+
+    private void blackMove() {
+        boolean moveOk = false;
+        do {
+            try {
+                // read black move
+                System.out.println("Black move: ");
+                String blackMove = sc.nextLine();
+
+                // move black piece
+                board.move(blackMove, PieceColor.BLACK);
+            } catch (IllegalArgumentException iae) {
+                System.out.println(iae.getMessage());
+            }
+        } while(!moveOk);
+    }
+
 
     public void check() {
         System.out.println("Check!");
