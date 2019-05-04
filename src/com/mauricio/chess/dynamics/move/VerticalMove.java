@@ -19,7 +19,7 @@ public class VerticalMove implements MoveChain {
     public boolean isAllowed() {
         boolean isAllowed = true;
         // vertical moves do not allow file change
-        if(!fromCell.sameFile(toCell)) {
+        if(next == null && !fromCell.sameFile(toCell)) {
             return false;
         }
 
@@ -33,11 +33,11 @@ public class VerticalMove implements MoveChain {
             }
         } else {
             if (size != null) {
-                return Math.abs(fromCell.rankDistanceTo(toCell)) == size;
+                isAllowed = Math.abs(fromCell.rankDistanceTo(toCell)) == size;
             }
         }
 
-        if (next != null) {
+        if (isAllowed && next != null) {
             isAllowed = next.isAllowed();
         }
         return isAllowed;

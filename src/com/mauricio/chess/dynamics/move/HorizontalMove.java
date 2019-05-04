@@ -18,15 +18,15 @@ public class HorizontalMove implements MoveChain {
     public boolean isAllowed() {
         boolean isAllowed = true;
         // horizontal moves do not allow rank change
-        if(!fromCell.sameRank(toCell)) {
+        if(next == null && !fromCell.sameRank(toCell)) {
             return false;
         }
 
         if (size != null) {
-            return Math.abs(fromCell.rankDistanceTo(toCell)) == size;
+            isAllowed = Math.abs(fromCell.fileDistanceTo(toCell)) == size;
         }
 
-        if(next != null) {
+        if(isAllowed && next != null) {
             isAllowed = next.isAllowed();
         }
         return isAllowed;
