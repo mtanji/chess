@@ -3,11 +3,13 @@ package com.mauricio.chess.element;
 public abstract class Piece {
 
     protected final PieceColor pieceColor;
+    protected final Board board;
     protected Cell currentCell;
 
-    Piece(PieceColor pieceColor, Cell currentCell) {
+    Piece(Board board, Cell currentCell, PieceColor pieceColor) {
         this.pieceColor = pieceColor;
         this.currentCell = currentCell;
+        this.board = board;
     }
 
     void move(Cell cell) {

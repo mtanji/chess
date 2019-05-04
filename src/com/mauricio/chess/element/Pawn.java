@@ -3,11 +3,9 @@ package com.mauricio.chess.element;
 public class Pawn extends Piece {
 
     private boolean firstMove = true;
-    private final Board board;
 
     Pawn(Board board, Cell currentCell, PieceColor color) {
-        super(color, currentCell);
-        this.board = board;
+        super(board, currentCell, color);
         currentCell.setPiece(this);
     }
 
