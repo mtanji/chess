@@ -22,7 +22,15 @@ public class Piece {
         }
         currentCell = cell;
         // set piece reference into new position
+        Piece potentialyCampturedPiece = cell.getPiece();
+        if (potentialyCampturedPiece != null) {
+            potentialyCampturedPiece.remove();
+        }
         currentCell.setPiece(this);
+    }
+
+    void remove() {
+        currentCell = null;
     }
 
     public boolean canMove(Cell toCell) {
