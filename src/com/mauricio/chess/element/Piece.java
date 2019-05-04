@@ -1,31 +1,33 @@
 package com.mauricio.chess.element;
 
-public abstract class Piece {
+public class Piece {
 
-    protected final Board board;
-    protected final PieceColor pieceColor;
-    protected Cell currentCell;
+    private final PieceColor pieceColor;
+    private final PieceType pieceType;
+    private Cell currentCell;
 
-    Piece(Board board, Cell currentCell, PieceColor pieceColor) {
+    Piece(PieceColor pieceColor, PieceType pieceType) {
         this.pieceColor = pieceColor;
-        this.currentCell = currentCell;
-        this.board = board;
+        this.pieceType = pieceType;
     }
 
     void move(Cell cell) {
         // remove piece reference in previous position
-        currentCell.setPiece(null);
+        if (currentCell != null) {
+            currentCell.setPiece(null);
+        }
         currentCell = cell;
         // set piece reference into new position
         currentCell.setPiece(this);
     }
 
-    abstract public boolean allowed(Cell cell);
-
-    abstract protected PieceType getType();
+    public boolean allowed(Cell cell) {
+        // TODO inject move strategies
+        return true;
+    }
 
     @Override
     public String toString() {
-        return pieceColor + " " + getType() + " from " + currentCell;
+        return pieceColor + " " + pieceType + " at " + currentCell;
     }
 }

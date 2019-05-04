@@ -8,27 +8,25 @@ import java.util.Map;
 
 public class PieceSet {
 
-//    private final PieceColor pieceColor;
     private final Map<PieceType, List<Piece>> pieceSet;
 
     PieceSet(PieceColor pieceColor) {
-//        this.pieceColor = pieceColor;
         pieceSet = new HashMap<>();
 
         List<Piece> pawns = new ArrayList<>();
         for (int i = 0; i < 8; i++) {
-            pawns.add(new FullPiece(pieceColor, PieceType.Pawn, i));
+            pawns.add(new Piece(pieceColor, PieceType.Pawn));
         }
         pieceSet.put(PieceType.Pawn, pawns);
 
         pieceSet.put(PieceType.Rook,
-                Arrays.asList(new FullPiece(pieceColor, PieceType.Rook, 0), new FullPiece(pieceColor, PieceType.Rook, 1)));
+                Arrays.asList(new Piece(pieceColor, PieceType.Rook), new Piece(pieceColor, PieceType.Rook)));
         pieceSet.put(PieceType.Knight,
-                Arrays.asList(new FullPiece(pieceColor, PieceType.Knight, 0), new FullPiece(pieceColor, PieceType.Knight, 1)));
+                Arrays.asList(new Piece(pieceColor, PieceType.Knight), new Piece(pieceColor, PieceType.Knight)));
         pieceSet.put(PieceType.Bishop,
-                Arrays.asList(new FullPiece(pieceColor, PieceType.Bishop, 0), new FullPiece(pieceColor, PieceType.Bishop, 1)));
-        pieceSet.put(PieceType.Queen, Arrays.asList(new FullPiece(pieceColor, PieceType.Queen, 0)));
-        pieceSet.put(PieceType.King, Arrays.asList(new FullPiece(pieceColor, PieceType.King, 0)));
+                Arrays.asList(new Piece(pieceColor, PieceType.Bishop), new Piece(pieceColor, PieceType.Bishop)));
+        pieceSet.put(PieceType.Queen, Arrays.asList(new Piece(pieceColor, PieceType.Queen)));
+        pieceSet.put(PieceType.King, Arrays.asList(new Piece(pieceColor, PieceType.King)));
     }
 
     List<Piece> getPiecesOfType(PieceType pieceType) {

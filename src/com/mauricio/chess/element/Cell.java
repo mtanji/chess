@@ -23,14 +23,6 @@ public class Cell {
         return piece != null;
     }
 
-    String getFile() {
-        return file;
-    }
-
-    Integer getRank() {
-        return rank;
-    }
-
     String getId() {
         return file + rank;
     }

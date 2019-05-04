@@ -75,14 +75,6 @@ public class Game {
         return players.get(pieceColor);
     }
 
-//    public Player getWhitePlayer() {
-//        return players.get(PieceColor.WHITE);
-//    }
-//
-//    public Player getBlackPlayer() {
-//        return players.get(PieceColor.BLACK);
-//    }
-
     public void check() {
         System.out.println("Check!");
     }

@@ -11,11 +11,10 @@ import java.util.TreeMap;
 public class Board {
 
     private static final int BOARD_LENGTH = 8;
-    private Game game;
-    //    private final Map<PieceColor, Map<PieceType, List<Piece>>> pieces = new HashMap<>();
+    private final Game game;
+    // use TreeMap to ease debugging
     private final Map<String, Cell> cells = new TreeMap<>();
 
-    public Board(){} // TODO remove after refactor and change game to final
     public Board(Game game) {
         this.game = game;
         // build all board cells
@@ -31,47 +30,18 @@ public class Board {
         // iterate over piece colors
         for (Map.Entry<PieceColor, Map<PieceType, List<String>>> sameColorPieces : InitialSetup.setup.entrySet()) {
             PieceColor pieceColor = sameColorPieces.getKey();
-//            pieces.put(pieceColor, new HashMap<>());
             Player player = game.getPlayer(pieceColor);
             // iterate over piece types
             for (Map.Entry<PieceType, List<String>> sameTypePieces : sameColorPieces.getValue().entrySet()) {
                 PieceType pieceType = sameTypePieces.getKey();
                 List<Piece> sameColorTypePieces = player.getPiecesOfType(pieceType);
                 List<String> cellCodesForPieceType = sameTypePieces.getValue();
-
+                // iterate over pieces of same type
                 for (int i = 0; i < cellCodesForPieceType.size(); i++) {
                     String cellCode = cellCodesForPieceType.get(i);
                     Cell cell = cells.get(cellCode);
                     sameColorTypePieces.get(i).move(cell);
                 }
-
-//                for (String cellCode : sameTypePieces.getValue()) {
-//                    Piece piece;
-//                    switch(pieceType) {
-//                        case Pawn:
-//                            piece = new Pawn(this, cells.get(cellCode), pieceColor);
-//                            break;
-//                        case Rook:
-//                            piece = new Rook(this, cells.get(cellCode), pieceColor);
-//                            break;
-//                        case Knight:
-//                            piece = new Knight(this, cells.get(cellCode), pieceColor);
-//                            break;
-//                        case Bishop:
-//                            piece = new Bishop(this, cells.get(cellCode), pieceColor);
-//                            break;
-//                        case Queen:
-//                            piece = new Queen(this, cells.get(cellCode), pieceColor);
-//                            break;
-//                        case King:
-//                            piece = new King(this, cells.get(cellCode), pieceColor);
-//                            break;
-//                        default:
-//                            throw new IllegalStateException("piece type is invalid");
-//                    }
-//                    sameColorTypePieces.add(piece);
-//                }
-//                pieces.get(pieceColor).put(pieceType, sameColorTypePieces);
             }
         }
     }

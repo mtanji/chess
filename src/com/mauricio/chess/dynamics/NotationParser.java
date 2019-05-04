@@ -22,7 +22,6 @@ public class NotationParser {
         String file = move.substring(charIndex, charIndex + 1);
         charIndex++;
         Integer rank = Integer.valueOf(move.substring(charIndex, charIndex + 1));
-//        Cell moveTo = new Cell(file, rank); // TODO it is wrong to create new cell here
         Cell moveTo = board.getCell(file + rank);
         return new Move(pieceColor, pieceType, moveTo);
     }
