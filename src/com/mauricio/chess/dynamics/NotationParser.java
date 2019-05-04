@@ -4,6 +4,9 @@ import com.mauricio.chess.element.Board;
 import com.mauricio.chess.element.Cell;
 import com.mauricio.chess.element.PieceColor;
 import com.mauricio.chess.element.PieceType;
+import java.util.Arrays;
+import java.util.LinkedList;
+import java.util.NoSuchElementException;
 
 public class NotationParser {
 
@@ -14,16 +17,22 @@ public class NotationParser {
     //    N: kNight
     //    none: pawn
     public static Move parseMove(String move, PieceColor pieceColor, Board board) {
-        int charIndex = 0;
-        PieceType pieceType = PieceType.getPieceType(move.substring(charIndex, charIndex + 1));
-        if(move.length() > 2) {
-            charIndex++;
+        try {
+            LinkedList<String> moveStream = new LinkedList<>(Arrays.asList(move.split("")));
+            String first = moveStream.removeFirst();
+            PieceType pieceType = PieceType.getPieceType(first);
+            String cellCode;
+            if (!PieceType.isPieceTypeCode(first)) {
+                cellCode = first;
+            } else {
+                cellCode = moveStream.removeFirst();
+            }
+            cellCode += moveStream.removeFirst();
+            Cell moveTo = board.getCell(cellCode);
+            return new Move(pieceColor, pieceType, moveTo);
+        } catch (NoSuchElementException nsee) {
+            throw new IllegalArgumentException("Algebraic chess notation is invalid: " + nsee.getMessage(), nsee);
         }
-        String file = move.substring(charIndex, charIndex + 1);
-        charIndex++;
-        Integer rank = Integer.valueOf(move.substring(charIndex, charIndex + 1));
-        Cell moveTo = board.getCell(file + rank);
-        return new Move(pieceColor, pieceType, moveTo);
     }
 
 }

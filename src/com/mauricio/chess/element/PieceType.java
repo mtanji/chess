@@ -1,5 +1,9 @@
 package com.mauricio.chess.element;
 
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.Set;
+
 public enum PieceType {
     Pawn(""),
     Bishop("B"),
@@ -8,6 +12,7 @@ public enum PieceType {
     King("K"),
     Knight("N");
 
+    private static Set<String> pieceChars = new HashSet<>(Arrays.asList("B", "R", "Q", "K", "N"));
     String notation;
 
     PieceType(String notation) {
@@ -33,5 +38,9 @@ public enum PieceType {
                 throw new IllegalArgumentException(
                         "Invalid piece code. Piece code must be either B, R, Q, K, N or absent in case of pawn");
         }
+    }
+
+    public static boolean isPieceTypeCode(String character) {
+        return pieceChars.contains(character);
     }
 }

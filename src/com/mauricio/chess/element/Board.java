@@ -8,6 +8,7 @@ import com.mauricio.chess.dynamics.NotationParser;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.NoSuchElementException;
 import java.util.TreeMap;
 import java.util.stream.Collectors;
 
@@ -78,7 +79,11 @@ public class Board {
     }
 
     public Cell getCell(String cellCode) {
-        return cells.get(cellCode);
+        Cell cell = cells.get(cellCode);
+        if (cell == null) {
+            throw new NoSuchElementException("Cell with code " + cellCode + " was not found");
+        }
+        return cell;
     }
 
     private boolean isCheck(PieceColor justMovedColor) {
