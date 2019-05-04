@@ -22,9 +22,9 @@ public class Piece {
         }
         currentCell = cell;
         // set piece reference into new position
-        Piece potentialyCampturedPiece = cell.getPiece();
-        if (potentialyCampturedPiece != null) {
-            potentialyCampturedPiece.remove();
+        Piece potentiallyCapturedPiece = cell.getPiece();
+        if (potentiallyCapturedPiece != null) {
+            potentiallyCapturedPiece.remove();
         }
         currentCell.setPiece(this);
     }

@@ -42,4 +42,11 @@ public class PieceSet {
         return pieceSet.get(pieceType);
     }
 
+    List<Piece> getAllPieces() {
+        List<Piece> allPieces = new ArrayList<>();
+        for (List<Piece> pieces : pieceSet.values()) {
+            allPieces.addAll(pieces);
+        }
+        return allPieces;
+    }
 }

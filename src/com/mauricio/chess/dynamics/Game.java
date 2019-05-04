@@ -26,18 +26,32 @@ public class Game {
     }
 
     public void start() {
-
+        MoveResult moveResult;
         // while there is no winner alternate white and black
         while (gameOnGoing) {
-            whiteMove();
-            blackMove();
+            moveResult = whiteMove();
+            if (moveResult == MoveResult.CHECK) {
+                check();
+            } else if (moveResult == MoveResult.CHECK_MATE) {
+                setWinner(PieceColor.WHITE);
+                gameOnGoing = false;
+                continue;
+            }
+            moveResult = blackMove();
+            if (moveResult == MoveResult.CHECK) {
+                check();
+            } else if (moveResult == MoveResult.CHECK_MATE) {
+                setWinner(PieceColor.BLACK);
+                gameOnGoing = false;
+            }
         }
     }
 
     /**
      * Retry while user does not provide valid move
      */
-    private void whiteMove() {
+    private MoveResult whiteMove() {
+        MoveResult moveResult = null;
         boolean moveOk = false;
         do {
             try {
@@ -46,15 +60,17 @@ public class Game {
                 String whiteMove = sc.nextLine();
 
                 // move white piece
-                board.move(whiteMove, PieceColor.WHITE);
+                moveResult = board.move(whiteMove, PieceColor.WHITE);
                 moveOk = true;
             } catch (IllegalArgumentException iae) {
                 System.out.println(iae.getMessage());
             }
         } while (!moveOk);
+        return moveResult;
     }
 
-    private void blackMove() {
+    private MoveResult blackMove() {
+        MoveResult moveResult = null;
         boolean moveOk = false;
         do {
             try {
@@ -63,12 +79,13 @@ public class Game {
                 String blackMove = sc.nextLine();
 
                 // move black piece
-                board.move(blackMove, PieceColor.BLACK);
+                moveResult = board.move(blackMove, PieceColor.BLACK);
                 moveOk = true;
             } catch (IllegalArgumentException iae) {
                 System.out.println(iae.getMessage());
             }
-        } while(!moveOk);
+        } while (!moveOk);
+        return moveResult;
     }
 
     public Player getPlayer(PieceColor pieceColor) {

@@ -19,4 +19,9 @@ public class Player {
     public List<Piece> getPiecesOfType(PieceType pieceType) {
         return pieceSet.getPiecesOfType(pieceType);
     }
+
+    public List<Piece> getAllPieces() {
+        return pieceSet.getAllPieces();
+    }
+
 }

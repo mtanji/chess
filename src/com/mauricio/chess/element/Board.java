@@ -2,8 +2,10 @@ package com.mauricio.chess.element;
 
 import com.mauricio.chess.dynamics.Game;
 import com.mauricio.chess.dynamics.Move;
+import com.mauricio.chess.dynamics.MoveResult;
 import com.mauricio.chess.dynamics.MovingPieceFinder;
 import com.mauricio.chess.dynamics.NotationParser;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
@@ -46,7 +48,7 @@ public class Board {
         }
     }
 
-    public void move(String moveStr, PieceColor pieceColor) {
+    public MoveResult move(String moveStr, PieceColor pieceColor) {
 
         // validate move
         Move move = NotationParser.parseMove(moveStr, pieceColor, this);
@@ -62,13 +64,13 @@ public class Board {
 
         // verify check or checkmate
         if (isCheck(pieceColor)) {
-            // send check message
-            game.check();
-        } else if (isCheckMate(pieceColor)) {
-            // send checkmate message
-            game.setWinner(pieceColor);
-            game.end();
+            if(canEscape(pieceColor)) {
+                return MoveResult.CHECK;
+            } else {
+                return MoveResult.CHECK_MATE;
+            }
         }
+        return MoveResult.CONTINUE;
     }
 
     public Player getPieces(PieceColor color) {
@@ -79,11 +81,55 @@ public class Board {
         return cells.get(cellCode);
     }
 
-    private boolean isCheck(PieceColor color) {
-        return Math.random() > 0.5;
+    private boolean isCheck(PieceColor justMovedColor) {
+        // verify if King of opponent is at check
+        Piece opponentKing = getOpponentKing(justMovedColor);
+
+        Player checkingPlayer = getPieces(justMovedColor);
+        List<Piece> checkingPieces = checkingPlayer.getAllPieces();
+
+        boolean isCheck = false;
+        for (Piece piece : checkingPieces) {
+            isCheck = piece.canMove(opponentKing.getCell());
+            if (isCheck) {
+                break;
+            }
+        }
+        return isCheck;
     }
 
-    private boolean isCheckMate(PieceColor color) {
-        return Math.random() > 0.5;
+    private Piece getOpponentKing(PieceColor justMovedColor) {
+        Player player;
+        if (justMovedColor == PieceColor.WHITE) {
+            player = getPieces(PieceColor.BLACK);
+        } else {
+            player = getPieces(PieceColor.WHITE);
+        }
+        return player.getPiecesOfType(PieceType.King).get(0);
+    }
+
+    private boolean canEscape(PieceColor justMovedColor) {
+        // verify if King of opponent can escape
+        // King cannot escape if after any possible move, he is on check
+        boolean canEscape = true;
+
+        Piece opponentKing = getOpponentKing(justMovedColor);
+        List<Cell> kingNeighbourhood = getKingNeighborhood(opponentKing);
+
+        return canEscape;
+    }
+
+    List<Cell> getKingNeighborhood(Piece king) {
+        List<Cell> neighborhood = new ArrayList<>();
+        int kingRank = king.getCell().getRank();
+        int kingFile = FileMapping.fileToFileNumber.get(king.getCell().getFile());
+        for(int rank = kingRank - 1; rank <= kingRank + 1; rank++) {
+            for(int fileNumb = kingFile - 1; fileNumb <= kingFile + 1; fileNumb++) {
+                String file = FileMapping.fileNumberToFile.get(fileNumb);
+                String cellKey = file + rank;
+                neighborhood.add(cells.get(cellKey));
+            }
+        }
+        return neighborhood;
     }
 }
