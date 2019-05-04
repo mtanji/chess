@@ -27,7 +27,7 @@ public enum PieceType {
             case "N":
                 return PieceType.Knight;
             default:
-                if (Board.fileCodes.contains(pieceCode)) {
+                if (FileMapping.fileCodesSet.contains(pieceCode)) {
                     return PieceType.Pawn;
                 }
                 throw new IllegalArgumentException(

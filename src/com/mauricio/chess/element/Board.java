@@ -5,16 +5,11 @@ import com.mauricio.chess.dynamics.Move;
 import com.mauricio.chess.dynamics.MovingPieceFinder;
 import com.mauricio.chess.dynamics.NotationParser;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
 
 public class Board {
-
-    static final Set<String> fileCodes = new HashSet<>(Arrays.asList("a", "b", "c", "d", "e", "f", "g", "h"));
 
     private static final int BOARD_LENGTH = 8;
     private final Game game;
@@ -33,17 +28,21 @@ public class Board {
             }
         }
 
+        // White pieces
         for (int fileNumber = 1; fileNumber <= BOARD_LENGTH; fileNumber++) {
             String file = FileMapping.fileNumberToFile.get(fileNumber);
-
-            // white pawns
+            // pawns
             if (!whitePieces.containsKey(PieceType.Pawn)) {
                 whitePieces.put(PieceType.Pawn, new ArrayList<>());
             }
-
             whitePieces.get(PieceType.Pawn).add(new Pawn(this, cells.get(file + 2), PieceColor.WHITE));
+        }
+        // rooks
 
-            // black pawns
+        // Black pieces
+        for (int fileNumber = 1; fileNumber <= BOARD_LENGTH; fileNumber++) {
+            String file = FileMapping.fileNumberToFile.get(fileNumber);
+            // pawns
             if (!blackPieces.containsKey(PieceType.Pawn)) {
                 blackPieces.put(PieceType.Pawn, new ArrayList<>());
             }
