@@ -33,7 +33,7 @@ public class Game {
             if (moveResult == MoveResult.CHECK) {
                 check();
             } else if (moveResult == MoveResult.CHECK_MATE) {
-                setWinner(PieceColor.WHITE);
+                checkMateBy(PieceColor.WHITE);
                 gameOnGoing = false;
                 continue;
             }
@@ -41,7 +41,7 @@ public class Game {
             if (moveResult == MoveResult.CHECK) {
                 check();
             } else if (moveResult == MoveResult.CHECK_MATE) {
-                setWinner(PieceColor.BLACK);
+                checkMateBy(PieceColor.BLACK);
                 gameOnGoing = false;
             }
         }
@@ -108,7 +108,8 @@ public class Game {
         return winner;
     }
 
-    public void setWinner(PieceColor winner) {
+    public void checkMateBy(PieceColor winner) {
+        System.out.println("Checkmate!");
         this.winner = winner;
     }
 }

@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
+import java.util.stream.Collectors;
 
 public class Board {
 
@@ -49,7 +50,6 @@ public class Board {
     }
 
     public MoveResult move(String moveStr, PieceColor pieceColor) {
-
         // validate move
         Move move = NotationParser.parseMove(moveStr, pieceColor, this);
 
@@ -64,7 +64,7 @@ public class Board {
 
         // verify check or checkmate
         if (isCheck(pieceColor)) {
-            if(canEscape(pieceColor)) {
+            if (canEscape(pieceColor)) {
                 return MoveResult.CHECK;
             } else {
                 return MoveResult.CHECK_MATE;
@@ -84,13 +84,19 @@ public class Board {
     private boolean isCheck(PieceColor justMovedColor) {
         // verify if King of opponent is at check
         Piece opponentKing = getOpponentKing(justMovedColor);
+        Cell opponentKingCell = opponentKing.getCell();
 
+        return isCheckAt(justMovedColor, opponentKingCell);
+    }
+
+    private boolean isCheckAt(PieceColor justMovedColor, Cell opponentKingCell) {
         Player checkingPlayer = getPieces(justMovedColor);
-        List<Piece> checkingPieces = checkingPlayer.getAllPieces();
-
+        List<Piece> checkingPieces = checkingPlayer.getAllPieces().stream()
+                .filter(piece -> piece.getCell() != null)
+                .collect(Collectors.toList());
         boolean isCheck = false;
         for (Piece piece : checkingPieces) {
-            isCheck = piece.canMove(opponentKing.getCell());
+            isCheck = piece.canMove(opponentKingCell);
             if (isCheck) {
                 break;
             }
@@ -111,25 +117,35 @@ public class Board {
     private boolean canEscape(PieceColor justMovedColor) {
         // verify if King of opponent can escape
         // King cannot escape if after any possible move, he is on check
-        boolean canEscape = true;
+        boolean canEscape = false;
 
         Piece opponentKing = getOpponentKing(justMovedColor);
-        List<Cell> kingNeighbourhood = getKingNeighborhood(opponentKing);
+        List<Cell> kingNeighborhood = getFreeKingNeighborhood(opponentKing);
 
+        for (Cell cell : kingNeighborhood) {
+            if (!isCheckAt(justMovedColor, cell)) {
+                canEscape = true;
+                break;
+            }
+        }
         return canEscape;
     }
 
-    List<Cell> getKingNeighborhood(Piece king) {
+    private List<Cell> getFreeKingNeighborhood(Piece king) {
         List<Cell> neighborhood = new ArrayList<>();
         int kingRank = king.getCell().getRank();
         int kingFile = FileMapping.fileToFileNumber.get(king.getCell().getFile());
-        for(int rank = kingRank - 1; rank <= kingRank + 1; rank++) {
-            for(int fileNumb = kingFile - 1; fileNumb <= kingFile + 1; fileNumb++) {
+        for (int rank = kingRank - 1; rank <= kingRank + 1; rank++) {
+            for (int fileNumb = kingFile - 1; fileNumb <= kingFile + 1; fileNumb++) {
                 String file = FileMapping.fileNumberToFile.get(fileNumb);
                 String cellKey = file + rank;
                 neighborhood.add(cells.get(cellKey));
             }
         }
+        neighborhood = neighborhood.stream()
+                .filter(cell -> cell != null)
+                .filter(cell -> !cell.hasPiece())
+                .collect(Collectors.toList());
         return neighborhood;
     }
 }
