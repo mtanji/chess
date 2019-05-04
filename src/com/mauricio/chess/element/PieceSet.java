@@ -1,6 +1,7 @@
 package com.mauricio.chess.element;
 
 import com.mauricio.chess.dynamics.move.BishopMove;
+import com.mauricio.chess.dynamics.move.KingMove;
 import com.mauricio.chess.dynamics.move.KnightMove;
 import com.mauricio.chess.dynamics.move.PawnMove;
 import com.mauricio.chess.dynamics.move.QueenMove;
@@ -34,7 +35,7 @@ public class PieceSet {
                 Arrays.asList(new Piece(pieceColor, PieceType.Bishop, new BishopMove()),
                         new Piece(pieceColor, PieceType.Bishop, new BishopMove())));
         pieceSet.put(PieceType.Queen, Arrays.asList(new Piece(pieceColor, PieceType.Queen, new QueenMove())));
-        pieceSet.put(PieceType.King, Arrays.asList(new Piece(pieceColor, PieceType.King, new KnightMove())));
+        pieceSet.put(PieceType.King, Arrays.asList(new Piece(pieceColor, PieceType.King, new KingMove())));
     }
 
     List<Piece> getPiecesOfType(PieceType pieceType) {

@@ -6,6 +6,10 @@ import com.mauricio.chess.element.Piece;
 public class KingMove implements PieceMove {
 
     public boolean canMove(Piece piece, Cell toCell) {
-        return true;
+        Cell fromCell = piece.getCell();
+        MoveChain dMove = new DiagonalMove.Builder(fromCell, toCell).setSize(1).build();
+        MoveChain vMove = new VerticalMove.Builder(fromCell, toCell).setSize(1).build();
+        MoveChain hMove = new HorizontalMove.Builder(fromCell, toCell).setSize(1).build();
+        return dMove.isAllowed() || vMove.isAllowed() || hMove.isAllowed();
     }
 }

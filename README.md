@@ -10,3 +10,4 @@ CLI chess game
 ## Missing features
 * Does not validate which piece color is being captured
 * Does not block jumps over pieces when moving pieces
+* Does not recognize special moves: castling, en-passant, promotion
