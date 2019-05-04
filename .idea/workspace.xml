@@ -2,9 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a397b664-a27a-4a04-b981-00451642c645" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/src/com/mauricio/chess/dynamics/NotationParser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/mauricio/chess/dynamics/NotationParser.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/mauricio/chess/element/Board.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/mauricio/chess/element/Board.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/mauricio/chess/element/PieceType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/mauricio/chess/element/PieceType.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/mauricio/chess/dynamics/Move.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/mauricio/chess/dynamics/Move.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/mauricio/chess/dynamics/move/DiagonalMove.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/mauricio/chess/dynamics/move/DiagonalMove.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/mauricio/chess/dynamics/move/HorizontalMove.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/mauricio/chess/dynamics/move/HorizontalMove.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/mauricio/chess/dynamics/move/PawnMove.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/mauricio/chess/dynamics/move/PawnMove.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/mauricio/chess/dynamics/move/PieceMove.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/mauricio/chess/dynamics/move/PieceMove.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/mauricio/chess/dynamics/move/VerticalMove.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/mauricio/chess/dynamics/move/VerticalMove.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/mauricio/chess/element/Cell.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/mauricio/chess/element/Cell.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/mauricio/chess/element/FileMapping.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/mauricio/chess/element/FileMapping.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -33,27 +38,27 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
-          <entry key="java" value="116" />
+          <entry key="java" value="118" />
           <entry key="md" value="2" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="JAVA" value="116" />
+          <entry key="JAVA" value="118" />
           <entry key="Markdown" value="2" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="dummy" value="29" />
-          <entry key="java" value="11427" />
+          <entry key="java" value="11428" />
           <entry key="md" value="211" />
           <entry key="txt" value="3" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JAVA" value="11427" />
+          <entry key="JAVA" value="11428" />
           <entry key="Markdown" value="211" />
           <entry key="PLAIN_TEXT" value="32" />
         </counts>
@@ -66,7 +71,7 @@
         <entry file="file://$PROJECT_DIR$/src/com/mauricio/chess/dynamics/Game.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="253">
-              <caret line="62" column="36" lean-forward="true" selection-start-line="62" selection-start-column="36" selection-end-line="62" selection-end-column="36" />
+              <caret line="62" column="36" selection-start-line="62" selection-start-column="36" selection-end-line="62" selection-end-column="36" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#2276#2277#0" expanded="true" />
@@ -78,11 +83,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/mauricio/chess/dynamics/NotationParser.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="440">
-              <caret line="33" selection-start-line="33" selection-end-line="33" />
+            <state relative-caret-position="480">
+              <caret line="24" column="52" selection-start-line="24" selection-start-column="52" selection-end-line="24" selection-end-column="52" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -94,7 +99,7 @@
         <entry file="file://$PROJECT_DIR$/src/com/mauricio/Main.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="240">
-              <caret line="12" column="64" lean-forward="true" selection-start-line="12" selection-start-column="64" selection-end-line="12" selection-end-column="64" />
+              <caret line="12" column="64" selection-start-line="12" selection-start-column="64" selection-end-line="12" selection-end-column="64" />
             </state>
           </provider>
         </entry>
@@ -108,6 +113,18 @@
                 <element signature="imports" expanded="true" />
                 <element signature="e#1195#1196#0" expanded="true" />
                 <element signature="e#1227#1228#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/mauricio/chess/dynamics/Move.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="280">
+              <caret line="14" column="7" lean-forward="true" selection-start-line="14" selection-start-column="7" selection-end-line="14" selection-end-column="7" />
+              <folding>
+                <element signature="imports" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -144,11 +161,23 @@
           </provider>
         </entry>
       </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/com/mauricio/chess/element/FileMapping.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="420">
+              <caret line="21" lean-forward="true" selection-start-line="21" selection-end-line="21" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/mauricio/chess/element/Player.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="400">
-              <caret line="22" column="32" lean-forward="true" selection-start-line="22" selection-start-column="32" selection-end-line="22" selection-end-column="32" />
+              <caret line="22" column="32" selection-start-line="22" selection-start-column="32" selection-end-line="22" selection-end-column="32" />
               <folding>
                 <element signature="e#429#430#0" expanded="true" />
                 <element signature="e#487#488#0" expanded="true" />
@@ -164,38 +193,6 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="182">
               <caret line="21" selection-start-line="21" selection-end-line="21" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/mauricio/chess/dynamics/move/PawnMove.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="280">
-              <caret line="14" selection-start-line="14" selection-end-line="14" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/mauricio/chess/element/Piece.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="182">
-              <caret line="36" selection-start-line="36" selection-end-line="36" />
-              <folding>
-                <element signature="e#760#761#0" expanded="true" />
-                <element signature="e#793#794#0" expanded="true" />
-                <element signature="e#933#934#0" expanded="true" />
-                <element signature="e#962#963#0" expanded="true" />
-                <element signature="e#996#997#0" expanded="true" />
-                <element signature="e#1037#1038#0" expanded="true" />
-                <element signature="e#1070#1071#0" expanded="true" />
-                <element signature="e#1116#1117#0" expanded="true" />
-                <element signature="e#1190#1191#0" expanded="true" />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -411,7 +408,6 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-363" y="-1447" width="2062" height="1126" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.15084915" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -419,7 +415,7 @@
       <window_info id="UI Designer" order="3" />
       <window_info id="Favorites" order="4" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
-      <window_info active="true" anchor="bottom" id="Find" order="1" visible="true" weight="0.18630412" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.18630412" />
       <window_info anchor="bottom" id="Run" order="2" weight="0.33333334" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.3997986" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
@@ -428,7 +424,7 @@
       <window_info anchor="bottom" id="CheckStyle" order="7" />
       <window_info anchor="bottom" id="Terminal" order="8" />
       <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
-      <window_info anchor="bottom" id="Version Control" order="10" />
+      <window_info active="true" anchor="bottom" id="Version Control" order="10" visible="true" weight="0.32930514" />
       <window_info anchor="bottom" id="Messages" order="11" weight="0.32930514" />
       <window_info anchor="bottom" id="FindBugs-IDEA" order="12" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
@@ -501,16 +497,6 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/mauricio/chess/element/Bishop.java" />
-    <entry file="file://$PROJECT_DIR$/src/com/mauricio/chess/element/FileMapping.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="418">
-          <caret line="27" selection-start-line="27" selection-end-line="27" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/mauricio/chess/element/InitialSetup.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="420">
@@ -534,18 +520,6 @@
           <caret line="5" column="17" selection-start-line="5" selection-start-column="17" selection-end-line="5" selection-end-column="17" />
           <folding>
             <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/mauricio/chess/dynamics/Move.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="280">
-          <caret line="14" column="19" lean-forward="true" selection-start-line="14" selection-start-column="19" selection-end-line="14" selection-end-column="19" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#810#811#0" expanded="true" />
-            <element signature="e#839#840#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -680,7 +654,7 @@
     <entry file="file://$PROJECT_DIR$/src/com/mauricio/chess/element/Player.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="400">
-          <caret line="22" column="32" lean-forward="true" selection-start-line="22" selection-start-column="32" selection-end-line="22" selection-end-column="32" />
+          <caret line="22" column="32" selection-start-line="22" selection-start-column="32" selection-end-line="22" selection-end-column="32" />
           <folding>
             <element signature="e#429#430#0" expanded="true" />
             <element signature="e#487#488#0" expanded="true" />
@@ -700,7 +674,7 @@
     <entry file="file://$PROJECT_DIR$/src/com/mauricio/Main.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="240">
-          <caret line="12" column="64" lean-forward="true" selection-start-line="12" selection-start-column="64" selection-end-line="12" selection-end-column="64" />
+          <caret line="12" column="64" selection-start-line="12" selection-start-column="64" selection-end-line="12" selection-end-column="64" />
         </state>
       </provider>
     </entry>
@@ -716,27 +690,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/mauricio/chess/element/Cell.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="540">
-          <caret line="33" column="11" selection-start-line="33" selection-start-column="11" selection-end-line="33" selection-end-column="11" />
-          <folding>
-            <element signature="e#282#283#0" expanded="true" />
-            <element signature="e#316#317#0" expanded="true" />
-            <element signature="e#394#395#0" expanded="true" />
-            <element signature="e#430#431#0" expanded="true" />
-            <element signature="e#569#570#0" expanded="true" />
-            <element signature="e#603#604#0" expanded="true" />
-            <element signature="e#841#842#0" expanded="true" />
-            <element signature="e#890#891#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/mauricio/chess/dynamics/Game.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="253">
-          <caret line="62" column="36" lean-forward="true" selection-start-line="62" selection-start-column="36" selection-end-line="62" selection-end-column="36" />
+          <caret line="62" column="36" selection-start-line="62" selection-start-column="36" selection-end-line="62" selection-end-column="36" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#2276#2277#0" expanded="true" />
@@ -759,8 +716,45 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/mauricio/chess/dynamics/NotationParser.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="440">
-          <caret line="33" selection-start-line="33" selection-end-line="33" />
+        <state relative-caret-position="480">
+          <caret line="24" column="52" selection-start-line="24" selection-start-column="52" selection-end-line="24" selection-end-column="52" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/mauricio/chess/dynamics/Move.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="280">
+          <caret line="14" column="7" lean-forward="true" selection-start-line="14" selection-start-column="7" selection-end-line="14" selection-end-column="7" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/mauricio/chess/element/Cell.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="540">
+          <caret line="33" column="11" selection-start-line="33" selection-start-column="11" selection-end-line="33" selection-end-column="11" />
+          <folding>
+            <element signature="e#282#283#0" expanded="true" />
+            <element signature="e#316#317#0" expanded="true" />
+            <element signature="e#394#395#0" expanded="true" />
+            <element signature="e#430#431#0" expanded="true" />
+            <element signature="e#569#570#0" expanded="true" />
+            <element signature="e#603#604#0" expanded="true" />
+            <element signature="e#841#842#0" expanded="true" />
+            <element signature="e#890#891#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/mauricio/chess/element/FileMapping.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="420">
+          <caret line="21" lean-forward="true" selection-start-line="21" selection-end-line="21" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

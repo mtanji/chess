@@ -12,7 +12,7 @@ public class PawnMove implements PieceMove {
         MoveChain move1 = new VerticalMove.Builder(fromCell, toCell).setIncrementRank(isWhite).setSize(1).build();
         MoveChain move2 = new VerticalMove.Builder(fromCell, toCell).setIncrementRank(isWhite).setSize(2).build();
         MoveChain captureMove = new DiagonalMove.Builder(fromCell, toCell).setIncrementRank(isWhite).setSize(1).build();
-        return  move1.isAllowed() || move2.isAllowed() || captureMove.isAllowed();
+        return move1.isAllowed() || move2.isAllowed() || captureMove.isAllowed();
     }
 
 }

@@ -19,7 +19,7 @@ public class VerticalMove implements MoveChain {
     public boolean isAllowed() {
         boolean isAllowed = true;
         // vertical moves do not allow file change
-        if(next == null && !fromCell.sameFile(toCell)) {
+        if (next == null && !fromCell.sameFile(toCell)) {
             return false;
         }
 

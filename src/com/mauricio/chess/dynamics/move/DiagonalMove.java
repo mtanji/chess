@@ -21,7 +21,7 @@ public class DiagonalMove implements MoveChain {
         // diagonal moves must have same file and rank distance between cells
         int absRankDistance = Math.abs(fromCell.rankDistanceTo(toCell));
         int absFileDistance = Math.abs(fromCell.fileDistanceTo(toCell));
-        if(next == null && !(absRankDistance == absFileDistance)) {
+        if (next == null && !(absRankDistance == absFileDistance)) {
             return false;
         }
 

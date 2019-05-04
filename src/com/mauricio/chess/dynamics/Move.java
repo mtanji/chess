@@ -12,9 +12,6 @@ public class Move {
 
     /**
      * Limitation: This representation cannot disambiguate moves where pieces of same type can reach the destiny cell
-     * @param color
-     * @param pieceType
-     * @param moveTo
      */
     Move(PieceColor color, PieceType pieceType, Cell moveTo) {
         this.color = color;
