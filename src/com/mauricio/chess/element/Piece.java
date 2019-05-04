@@ -2,8 +2,8 @@ package com.mauricio.chess.element;
 
 public abstract class Piece {
 
-    protected final PieceColor pieceColor;
     protected final Board board;
+    protected final PieceColor pieceColor;
     protected Cell currentCell;
 
     Piece(Board board, Cell currentCell, PieceColor pieceColor) {
@@ -21,4 +21,11 @@ public abstract class Piece {
     }
 
     abstract public boolean allowed(Cell cell);
+
+    abstract protected PieceType getType();
+
+    @Override
+    public String toString() {
+        return pieceColor + " " + getType() + " from " + currentCell;
+    }
 }

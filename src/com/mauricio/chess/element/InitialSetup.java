@@ -29,6 +29,4 @@ public class InitialSetup {
         setup.get(PieceColor.BLACK).put(PieceType.Queen, Arrays.asList("d8"));
         setup.get(PieceColor.BLACK).put(PieceType.King, Arrays.asList("e8"));
     }
-    List<String> whitePaws = Arrays.asList("a2", "b2", "c2", "d2", "e2", "f2", "g2", "h2");
-    List<String> whiteRooks = Arrays.asList("a1", "h1");
 }

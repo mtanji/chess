@@ -28,6 +28,12 @@ public class Pawn extends Piece {
         }
     }
 
+
+    @Override
+    protected PieceType getType() {
+        return PieceType.Pawn;
+    }
+
     private boolean isValidWhiteFirstMove(Cell moveTo) {
         return isWhiteMoveForward(moveTo, 1) || isWhiteMoveForward(moveTo, 2);
     }
@@ -43,7 +49,7 @@ public class Pawn extends Piece {
     private boolean isWhiteCapture(Cell moveTo) {
         // TODO
         //moveTo.getRank() == currentCell.getRank() + 1 && isNeighborFile(moveTo) && isCellOccupied(moveTo);
-        return false;
+        return true;
     }
 
     private boolean isNeighborFile(Cell moveTo) {

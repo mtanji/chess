@@ -71,12 +71,16 @@ public class Board {
     public void move(String moveStr, PieceColor pieceColor) {
 
         // validate move
-        Move move = NotationParser.parseMove(moveStr, pieceColor);
+        Move move = NotationParser.parseMove(moveStr, pieceColor, this);
 
         // validate move
         MovingPieceFinder movingPieceFinder = new MovingPieceFinder(this, move);
         Piece piece = movingPieceFinder.find();
-        piece.move(cells.get(move.getMoveTo().toString()));
+        Cell moveTo = cells.get(move.getMoveTo().getId());
+        if(moveTo.hasPiece()) {
+            game.pieceCaptured(moveTo.getPiece());
+        }
+        piece.move(moveTo);
 
         // verify check or checkmate
         if (isCheck(pieceColor)) {
@@ -91,6 +95,10 @@ public class Board {
 
     public Map<PieceType, List<Piece>> getPieces(PieceColor color) {
         return pieces.get(color);
+    }
+
+    public Cell getCell(String cellCode) {
+        return cells.get(cellCode);
     }
 
     private boolean isCheck(PieceColor color) {

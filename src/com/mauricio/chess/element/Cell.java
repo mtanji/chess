@@ -15,16 +15,28 @@ public class Cell {
         this.piece = piece;
     }
 
-    public String getFile() {
+    Piece getPiece() {
+        return piece;
+    }
+
+    boolean hasPiece() {
+        return piece != null;
+    }
+
+    String getFile() {
         return file;
     }
 
-    public Integer getRank() {
+    Integer getRank() {
         return rank;
+    }
+
+    String getId() {
+        return file + rank;
     }
 
     @Override
     public String toString() {
-        return file + rank;
+        return getId();
     }
 }

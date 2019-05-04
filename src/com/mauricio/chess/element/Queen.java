@@ -11,4 +11,9 @@ public class Queen extends Piece {
     public boolean allowed(Cell cell) {
         return true;
     }
+
+    @Override
+    protected PieceType getType() {
+        return PieceType.Queen;
+    }
 }

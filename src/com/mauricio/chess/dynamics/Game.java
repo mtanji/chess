@@ -1,6 +1,7 @@
 package com.mauricio.chess.dynamics;
 
 import com.mauricio.chess.element.Board;
+import com.mauricio.chess.element.Piece;
 import com.mauricio.chess.element.PieceColor;
 import java.util.Scanner;
 
@@ -18,8 +19,7 @@ public class Game {
 
     public void start() {
 
-        // while there is no winner
-        // alternate white and black
+        // while there is no winner alternate white and black
         while (gameOnGoing) {
             whiteMove();
             blackMove();
@@ -66,6 +66,10 @@ public class Game {
 
     public void check() {
         System.out.println("Check!");
+    }
+
+    public void pieceCaptured(Piece piece) {
+        System.out.println("Piece captured: " + piece);
     }
 
     public void end() {
