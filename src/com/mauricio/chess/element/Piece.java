@@ -1,14 +1,18 @@
 package com.mauricio.chess.element;
 
+import com.mauricio.chess.dynamics.move.PieceMove;
+
 public class Piece {
 
     private final PieceColor pieceColor;
     private final PieceType pieceType;
+    private final PieceMove pieceMove;
     private Cell currentCell;
 
-    Piece(PieceColor pieceColor, PieceType pieceType) {
+    Piece(PieceColor pieceColor, PieceType pieceType, PieceMove pieceMove) {
         this.pieceColor = pieceColor;
         this.pieceType = pieceType;
+        this.pieceMove = pieceMove;
     }
 
     void move(Cell cell) {
@@ -21,9 +25,16 @@ public class Piece {
         currentCell.setPiece(this);
     }
 
-    public boolean allowed(Cell cell) {
-        // TODO inject move strategies
-        return true;
+    public boolean canMove(Cell toCell) {
+        return pieceMove.canMove(this, toCell);
+    }
+
+    public Cell getCell() {
+        return currentCell;
+    }
+
+    public PieceColor getPieceColor() {
+        return pieceColor;
     }
 
     @Override

@@ -19,7 +19,7 @@ public class MovingPieceFinder {
         Player player = board.getPieces(move.getColor());
         List<Piece> pieceOfType = player.getPiecesOfType(move.getPieceType());
         for (Piece piece : pieceOfType) {
-            if (piece.allowed(move.getMoveTo())) {
+            if (piece.canMove(move.getMoveTo())) {
                 return piece;
             }
         }

@@ -23,8 +23,32 @@ public class Cell {
         return piece != null;
     }
 
+    public String getFile() {
+        return file;
+    }
+
+    public Integer getRank() {
+        return rank;
+    }
+
     String getId() {
         return file + rank;
+    }
+
+    public boolean sameFile(Cell cell) {
+        return this.file.equals(cell.getFile());
+    }
+
+    public boolean sameRank(Cell cell) {
+        return this.rank.equals(cell.getRank());
+    }
+
+    public int rankDistanceTo(Cell cell) {
+        return cell.getRank() - this.rank;
+    }
+
+    public int fileDistanceTo(Cell cell) {
+        return FileMapping.fileToFileNumber.get(cell.getFile()) - FileMapping.fileToFileNumber.get((this.file));
     }
 
     @Override
