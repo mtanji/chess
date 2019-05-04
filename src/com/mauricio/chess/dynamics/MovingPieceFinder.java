@@ -4,6 +4,7 @@ import com.mauricio.chess.element.Board;
 import com.mauricio.chess.element.Piece;
 import com.mauricio.chess.element.Player;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class MovingPieceFinder {
 
@@ -17,7 +18,9 @@ public class MovingPieceFinder {
 
     public Piece find() {
         Player player = board.getPieces(move.getColor());
-        List<Piece> pieceOfType = player.getPiecesOfType(move.getPieceType());
+        List<Piece> pieceOfType = player.getPiecesOfType(move.getPieceType()).stream()
+                .filter(piece -> piece.getCell() != null)
+                .collect(Collectors.toList());
         for (Piece piece : pieceOfType) {
             if (piece.canMove(move.getMoveTo())) {
                 return piece;
