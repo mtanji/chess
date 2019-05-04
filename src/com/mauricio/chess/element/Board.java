@@ -26,7 +26,7 @@ public class Board {
             }
         }
 
-        // build all pieces
+        // position all pieces on the board
         // iterate over piece colors
         for (Map.Entry<PieceColor, Map<PieceType, List<String>>> sameColorPieces : InitialSetup.setup.entrySet()) {
             PieceColor pieceColor = sameColorPieces.getKey();
@@ -51,7 +51,7 @@ public class Board {
         // validate move
         Move move = NotationParser.parseMove(moveStr, pieceColor, this);
 
-        // validate move
+        // move
         MovingPieceFinder movingPieceFinder = new MovingPieceFinder(this, move);
         Piece piece = movingPieceFinder.find();
         Cell moveTo = cells.get(move.getMoveTo().getId());
