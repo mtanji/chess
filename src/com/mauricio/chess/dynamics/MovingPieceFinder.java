@@ -2,9 +2,8 @@ package com.mauricio.chess.dynamics;
 
 import com.mauricio.chess.element.Board;
 import com.mauricio.chess.element.Piece;
-import com.mauricio.chess.element.PieceType;
+import com.mauricio.chess.element.Player;
 import java.util.List;
-import java.util.Map;
 
 public class MovingPieceFinder {
 
@@ -17,8 +16,8 @@ public class MovingPieceFinder {
     }
 
     public Piece find() {
-        Map<PieceType, List<Piece>> pieces = board.getPieces(move.getColor());
-        List<Piece> pieceOfType = pieces.get(move.getPieceType());
+        Player player = board.getPieces(move.getColor());
+        List<Piece> pieceOfType = player.getPiecesOfType(move.getPieceType());
         for (Piece piece : pieceOfType) {
             if (piece.allowed(move.getMoveTo())) {
                 return piece;
