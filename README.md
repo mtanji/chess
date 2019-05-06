@@ -2,6 +2,9 @@
 
 CLI chess game
 
+# Start game
+* Starting class is com.mauricio.Main
+
 ## Game rules
 * This is a classic chess game that is played on Command Line Interface
 * Players alternate by providing moves to a given chess board

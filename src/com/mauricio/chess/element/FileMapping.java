@@ -7,6 +7,9 @@ import java.util.Map;
 import java.util.Set;
 import java.util.TreeSet;
 
+/**
+ * Maps file codes to integer constants and vice-versa
+ */
 class FileMapping {
 
     private static final List<String> fileCodesList = Arrays.asList("a", "b", "c", "d", "e", "f", "g", "h");

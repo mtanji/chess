@@ -12,6 +12,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * Set of pieces of a given player
+ */
 public class PieceSet {
 
     private final Map<PieceType, List<Piece>> pieceSet;

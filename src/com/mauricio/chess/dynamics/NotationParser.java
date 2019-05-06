@@ -16,6 +16,10 @@ public class NotationParser {
     //    K: King
     //    N: kNight
     //    none: pawn
+
+    /**
+     * Processes user input, that is in algebraic notation, as a queue of single character strings.
+     */
     public static Move parseMove(String move, PieceColor pieceColor, Board board) {
         try {
             LinkedList<String> moveStream = new LinkedList<>(Arrays.asList(move.split("")));

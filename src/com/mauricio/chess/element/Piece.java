@@ -6,6 +6,7 @@ public class Piece {
 
     private final PieceColor pieceColor;
     private final PieceType pieceType;
+    // injected allowed piece move, according to its PieceType
     private final PieceMove pieceMove;
     private Cell currentCell;
 
@@ -20,11 +21,14 @@ public class Piece {
         if (currentCell != null) {
             currentCell.setPiece(null);
         }
-        currentCell = cell;
+
         // set piece reference into new position
-        Piece potentiallyCapturedPiece = cell.getPiece();
-        if (potentiallyCapturedPiece != null) {
-            potentiallyCapturedPiece.remove();
+        currentCell = cell;
+
+        // removes captured piece from board
+        Piece capturedPiece = cell.getPiece();
+        if (capturedPiece != null) {
+            capturedPiece.remove();
         }
         currentCell.setPiece(this);
     }

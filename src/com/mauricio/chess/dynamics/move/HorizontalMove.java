@@ -2,12 +2,15 @@ package com.mauricio.chess.dynamics.move;
 
 import com.mauricio.chess.element.Cell;
 
+/**
+ * Base move to compose chess piece moves. {@link HorizontalMove} is used to represent moves along files. It does not
+ * handle scenario where a piece should not jump over another piece.
+ */
 public class HorizontalMove implements MoveChain {
 
     private final Cell fromCell;
     private final Cell toCell;
     private MoveChain next;
-    private boolean jumps; // TODO leave this validation for later
     private Integer size;
 
     private HorizontalMove(Cell fromCell, Cell toCell) {
@@ -32,6 +35,9 @@ public class HorizontalMove implements MoveChain {
         return isAllowed;
     }
 
+    /**
+     * Builder design pattern
+     */
     static class Builder {
 
         private final HorizontalMove verticalMove;
@@ -42,11 +48,6 @@ public class HorizontalMove implements MoveChain {
 
         HorizontalMove.Builder setSize(int size) {
             verticalMove.size = size;
-            return this;
-        }
-
-        HorizontalMove.Builder setJumps(boolean jumps) {
-            verticalMove.jumps = jumps;
             return this;
         }
 

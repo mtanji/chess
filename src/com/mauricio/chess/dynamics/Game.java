@@ -17,6 +17,9 @@ public class Game {
     private boolean gameOnGoing = true;
     private PieceColor winner;
 
+    /**
+     * Builds new game with and white player and one black player
+     */
     public Game() {
         Player player = new Player(PieceColor.WHITE);
         players.put(player.getType(), player);
@@ -31,16 +34,20 @@ public class Game {
         while (gameOnGoing) {
             moveResult = whiteMove();
             if (moveResult == MoveResult.CHECK) {
+                // check shows a message
                 check();
             } else if (moveResult == MoveResult.CHECK_MATE) {
+                // checkmate shows a message and ends while loop
                 checkMateBy(PieceColor.WHITE);
                 gameOnGoing = false;
                 continue;
             }
             moveResult = blackMove();
             if (moveResult == MoveResult.CHECK) {
+                // check shows a message
                 check();
             } else if (moveResult == MoveResult.CHECK_MATE) {
+                // checkmate shows a message and ends while loop
                 checkMateBy(PieceColor.BLACK);
                 gameOnGoing = false;
             }
@@ -53,6 +60,7 @@ public class Game {
     private MoveResult whiteMove() {
         MoveResult moveResult = null;
         boolean moveOk = false;
+        // request move until a valid move string is inserted
         do {
             try {
                 // read white move
@@ -72,6 +80,7 @@ public class Game {
     private MoveResult blackMove() {
         MoveResult moveResult = null;
         boolean moveOk = false;
+        // request move until a valid move string is inserted
         do {
             try {
                 // read black move
@@ -98,10 +107,6 @@ public class Game {
 
     public void pieceCaptured(Piece piece) {
         System.out.println("Piece captured: " + piece);
-    }
-
-    public void end() {
-        gameOnGoing = false;
     }
 
     public PieceColor getWinner() {

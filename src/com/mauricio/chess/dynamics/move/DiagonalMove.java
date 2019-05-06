@@ -2,13 +2,16 @@ package com.mauricio.chess.dynamics.move;
 
 import com.mauricio.chess.element.Cell;
 
+/**
+ * Base move to compose chess piece moves. {@link DiagonalMove} is used to represent moves along ranks and files by the
+ * same amount of cells. It does not handle scenario where a piece should not jump over another piece.
+ */
 public class DiagonalMove implements MoveChain {
 
     private final Cell fromCell;
     private final Cell toCell;
-    private MoveChain next;
+    private MoveChain next = null;
     private Boolean incrementRank;
-    private boolean jumps; // TODO leave this validation for later
     private Integer size;
 
     private DiagonalMove(Cell fromCell, Cell toCell) {
@@ -45,6 +48,9 @@ public class DiagonalMove implements MoveChain {
         return isAllowed;
     }
 
+    /**
+     * Builder design pattern
+     */
     static class Builder {
 
         private final DiagonalMove diagonalMove;
@@ -58,18 +64,8 @@ public class DiagonalMove implements MoveChain {
             return this;
         }
 
-        Builder setJumps(boolean jumps) {
-            diagonalMove.jumps = jumps;
-            return this;
-        }
-
         Builder setIncrementRank(boolean incrementRank) {
             diagonalMove.incrementRank = incrementRank;
-            return this;
-        }
-
-        Builder setNext(MoveChain moveChain) {
-            diagonalMove.next = moveChain;
             return this;
         }
 

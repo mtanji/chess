@@ -4,6 +4,9 @@ import com.mauricio.chess.element.Cell;
 import com.mauricio.chess.element.PieceColor;
 import com.mauricio.chess.element.PieceType;
 
+/**
+ * Parsing user algebraic notation input produces an instance of {@link Move}.
+ */
 public class Move {
 
     private final PieceColor color;

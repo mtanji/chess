@@ -4,6 +4,9 @@ import com.mauricio.chess.element.Cell;
 import com.mauricio.chess.element.Piece;
 import com.mauricio.chess.element.PieceColor;
 
+/**
+ * Implements {@link com.mauricio.chess.element.PieceType#Pawn} allowed moves
+ */
 public class PawnMove implements PieceMove {
 
     public boolean canMove(Piece piece, Cell toCell) {

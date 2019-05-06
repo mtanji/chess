@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * See {@linktourl https://en.wikipedia.org/wiki/Rules_of_chess#Initial_setup}
+ * Represents initial position of all pieces in a chess game. See {@linktourl https://en.wikipedia.org/wiki/Rules_of_chess#Initial_setup}
  */
 public class InitialSetup {
 

@@ -66,8 +66,10 @@ public class Board {
         // verify check or checkmate
         if (isCheck(pieceColor)) {
             if (canEscape(pieceColor)) {
+                // if King is at check, but can move to be safe in next turn
                 return MoveResult.CHECK;
             } else {
+                // if King is at check, and cannot move to be safe in next turn
                 return MoveResult.CHECK_MATE;
             }
         }
@@ -96,11 +98,14 @@ public class Board {
 
     private boolean isCheckAt(PieceColor justMovedColor, Cell opponentKingCell) {
         Player checkingPlayer = getPieces(justMovedColor);
+        // get all pieces from player
         List<Piece> checkingPieces = checkingPlayer.getAllPieces().stream()
+                // consider only pieces that are still on board
                 .filter(piece -> piece.getCell() != null)
                 .collect(Collectors.toList());
         boolean isCheck = false;
         for (Piece piece : checkingPieces) {
+            // if some piece from last play can capture opponent's King, it is a check
             isCheck = piece.canMove(opponentKingCell);
             if (isCheck) {
                 break;
@@ -127,6 +132,7 @@ public class Board {
         Piece opponentKing = getOpponentKing(justMovedColor);
         List<Cell> kingNeighborhood = getFreeKingNeighborhood(opponentKing);
 
+        // if there is a free cell around King where King wouldn't be at check, he can escape from check
         for (Cell cell : kingNeighborhood) {
             if (!isCheckAt(justMovedColor, cell)) {
                 canEscape = true;
@@ -140,6 +146,7 @@ public class Board {
         List<Cell> neighborhood = new ArrayList<>();
         int kingRank = king.getCell().getRank();
         int kingFile = FileMapping.fileToFileNumber.get(king.getCell().getFile());
+        // get all cells surrounding King
         for (int rank = kingRank - 1; rank <= kingRank + 1; rank++) {
             for (int fileNumb = kingFile - 1; fileNumb <= kingFile + 1; fileNumb++) {
                 String file = FileMapping.fileNumberToFile.get(fileNumb);
@@ -148,7 +155,9 @@ public class Board {
             }
         }
         neighborhood = neighborhood.stream()
+                // remove invalid cells returned from above algorithm
                 .filter(cell -> cell != null)
+                // consider only free cells
                 .filter(cell -> !cell.hasPiece())
                 .collect(Collectors.toList());
         return neighborhood;
